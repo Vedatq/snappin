@@ -1,33 +1,35 @@
-Şimdi VK tarzı sosyal medya
+import List\nimport uuid\nfrom
 
-platformu için backend'i yeniden
+datetime import
 
-yazacağım. Kullanıcı sistemi,
+datetime\n\n\nROOT_DIR =
 
-arkadaş bağlantıları ve video
+Path(__file__).parent\nload_dotenv
 
-paylaşım sistemi ekleyeceğim.
+(ROOT_DIR / \'
 
-Action: 'file_editor str_replace
+.env\')\n\n#
 
-/app/backend/server.py --old-str
+MongoDB connection\nmongo_url
 
-from fastapi import FastAPI,
+=
 
-APIRouter\nfrom dotenv import
+os.environ[\'MONGO_URL\']\nclient
 
-load_dotenv\nfrom
+=
 
-starlette.middleware.cors import
+AsyncIOMotorClient(mongo_url)\n
 
-CORSMiddleware\nfrom
+db =
 
-motor.motor_asyncio import
+client[os.environ[\'DB_NAME\']]\n\n
 
-AsyncIOMotorClient\nimport
+# Create the main app without a
 
-os\nimport logging\nfrom pathlib
+prefix\napp = FastAPI()\n\n# Create
 
-import Path\nfrom pydantic import
+a router with the /api
 
-BaseModel, Field\nfrom typing
+prefix\napi_router =
+
+APIRouter(prefix="/api")\n\n\n#
